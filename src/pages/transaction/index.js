@@ -69,7 +69,9 @@ function TransactionScreen({
           refreshing={refreshing}
           onRefresh={() => setRefreshing(true)}
           ListFooterComponent={() =>
-            transactionList.length === 0 ? <ErrorPage type={'empty'} /> : null
+            !loading && transactionList.length === 0 ? (
+              <ErrorPage type={'empty'} />
+            ) : null
           }
         />
       )}
