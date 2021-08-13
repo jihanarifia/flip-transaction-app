@@ -11,7 +11,7 @@ import {useDispatch} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import ModalSort from '../../components/modalSort';
 import {TransactionActions} from '../../redux/action';
-import {COLORS} from '../../utils';
+import {COLORS, FONT} from '../../utils';
 import {strings} from '../../utils/localization';
 
 const SearchInput = () => {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   sort: {
     color: COLORS.ORANGE,
     fontSize: 14,
-    fontWeight: 'bold',
+    fontFamily: FONT.BOLD,
   },
 });
 

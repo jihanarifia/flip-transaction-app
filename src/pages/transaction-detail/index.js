@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Text, View, StyleSheet, Clipboard} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {styles as globalStyles} from '../../styles';
-import {COLORS, HELPER} from '../../utils';
+import {COLORS, FONT, HELPER} from '../../utils';
 import {strings} from '../../utils/localization';
 
 function TransactionDetailScreen({route}) {
@@ -141,12 +141,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     color: COLORS.BLACK,
-    fontWeight: 'bold',
+    fontFamily: FONT.BOLD,
   },
   collapseText: {
     color: COLORS.ORANGE,
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: FONT.MEDIUM,
     textAlign: 'right',
   },
   ...globalStyles,

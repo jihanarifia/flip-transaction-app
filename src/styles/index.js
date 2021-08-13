@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../utils';
+import {COLORS, FONT} from '../utils';
 
 const styles = StyleSheet.create({
   containers: {
@@ -17,22 +17,19 @@ const styles = StyleSheet.create({
   },
   sectionLabel: {
     fontSize: 18,
-    fontWeight: 'bold',
     color: COLORS.BLACK,
-    fontFamily: 'ModeratBold',
+    fontFamily: FONT.BOLD,
   },
   sectionTitle: {
     fontSize: 16,
     color: COLORS.BLACK,
-    fontWeight: '800',
-    fontFamily: 'ModeratMedium',
+    fontFamily: FONT.MEDIUM,
   },
   sectionDescription: {
     marginTop: 5,
     fontSize: 14,
-    fontWeight: '400',
     color: COLORS.BLACK,
-    fontFamily: 'ModeratRegular',
+    fontFamily: FONT.REGULAR,
   },
 
   statusSuccess: {
@@ -44,7 +41,7 @@ const styles = StyleSheet.create({
     color: COLORS.WHITE,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    fontWeight: 'bold',
+    fontFamily: FONT.BOLD,
   },
   statusOther: {
     borderRadius: 5,
@@ -57,7 +54,7 @@ const styles = StyleSheet.create({
     color: COLORS.BLACK,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    fontWeight: 'bold',
+    fontFamily: FONT.BOLD,
   },
 });
 
