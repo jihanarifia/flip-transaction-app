@@ -7,10 +7,12 @@ const api = axios.create({
   baseURL: process.env.REACT_APP_IP,
   timeout: 60000,
 });
-
-function* fetchTransaction(action) {
+interface IResponse {
+  data?: any;
+}
+function* fetchTransaction() {
   try {
-    const res = yield call(api.get, CONSTANTS.API);
+    const res: IResponse = yield call(api.get, CONSTANTS.API);
     console.log(res.data);
     yield put({type: Types.GET_TRANSACTION_SUCCESS, payload: res});
   } catch (e) {
@@ -27,7 +29,7 @@ function* actionWatcher() {
 
 export default function* rootSaga() {
   yield all([
-    // actionWatcher(),
-    yield takeLatest(Types.GET_TRANSACTION_REQUEST, fetchTransaction),
+    actionWatcher(),
+    // yield takeLatest(Types.GET_TRANSACTION_REQUEST, fetchTransaction),
   ]);
 }

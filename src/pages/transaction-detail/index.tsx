@@ -5,7 +5,7 @@ import {styles as globalStyles} from '../../styles';
 import {COLORS, FONT, HELPER} from '../../utils';
 import {strings} from '../../utils/localization';
 
-function TransactionDetailScreen({route}) {
+function TransactionDetailScreen({route}: any) {
   const [collapse, setCollapse] = React.useState(true);
   const {detail} = route.params;
 
@@ -44,7 +44,7 @@ function TransactionDetailScreen({route}) {
     },
   ];
 
-  function _copyToClipboard(text) {
+  function _copyToClipboard(text: string) {
     Clipboard.setString(text);
   }
 

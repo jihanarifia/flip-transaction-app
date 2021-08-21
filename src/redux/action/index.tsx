@@ -9,24 +9,24 @@ export const Types = {
 
 export const TransactionActions = {
   // TRANSACTION LIST
-  getTransaction: data => ({
+  getTransaction: (data: any) => ({
     type: Types.GET_TRANSACTION_REQUEST,
     payload: data,
   }),
-  getTransactionSuccess: data => ({
+  getTransactionSuccess: (data: any) => ({
     type: Types.GET_TRANSACTION_SUCCESS,
     payload: data,
   }),
-  getTransactionFailure: error => ({
+  getTransactionFailure: (error: any) => ({
     type: Types.GET_TRANSACTION_FAILURE,
     error,
   }),
 
-  searchTransaction: data => ({
+  searchTransaction: (data: any) => ({
     type: Types.SEARCH_TRANSACTION,
     payload: data,
   }),
-  sortTransaction: data => ({
+  sortTransaction: (data: any) => ({
     type: Types.SORT_TRANSACTION,
     payload: data,
   }),

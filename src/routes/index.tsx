@@ -25,7 +25,7 @@ function MainStack() {
         <Stack.Screen
           name={ROUTE_NAMES.TRANSACTION_DETAIL}
           component={TransactionDetailScreen}
-          options={{headerTitle: props => null}}
+          options={{headerTitle: () => null}}
         />
       </Stack.Navigator>
     </NavigationContainer>

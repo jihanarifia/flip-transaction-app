@@ -46,7 +46,7 @@ const SearchInput = () => {
       <ModalSort
         visible={showFilter}
         value={sort}
-        onRequestClose={value => {
+        onRequestClose={(value: React.SetStateAction<string>) => {
           actions.sortTransaction(value);
           setSort(value);
           setShowFilter(false);

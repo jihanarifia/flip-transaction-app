@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {COLORS, FONT, HELPER} from '../../utils';
+import {COLORS, HELPER} from '../../utils';
 import {styles as globalStyles} from '../../styles';
 
 const SUCCESS = 'SUCCESS';
-const Item = ({data}) => {
+const Item = ({data}: any) => {
   return (
     <View
       style={[

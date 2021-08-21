@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {COLORS} from '../utils';
 
-export const LoadingFullscreen = () => {
+export const LoadingFullscreen: React.FC = () => {
   return (
     <View style={styles.loadingFullscreen}>
       <ActivityIndicator size="large" color={COLORS.ORANGE} />

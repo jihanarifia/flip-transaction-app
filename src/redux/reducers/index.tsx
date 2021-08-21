@@ -2,6 +2,7 @@ import {HELPER} from '../../utils';
 import {strings} from '../../utils/localization';
 import {Types} from '../action';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const List = {
   FT35059: {
     id: 'FT35059',
@@ -30,7 +31,7 @@ const initialState = {
   sort: '',
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: {type: any; payload: any}) => {
   switch (action.type) {
     //TRANSACTION LIST
     case Types.GET_TRANSACTION_REQUEST:
@@ -53,7 +54,7 @@ const reducer = (state = initialState, action) => {
     case Types.SEARCH_TRANSACTION:
       let search = action.payload.toUpperCase();
       let filteredTransaction = state.transactionTemp.filter(
-        x =>
+        (x: any) =>
           x.beneficiary_name.toUpperCase().match(search) ||
           x.sender_bank.toUpperCase().match(search) ||
           x.beneficiary_bank.toUpperCase().match(search) ||
@@ -65,7 +66,7 @@ const reducer = (state = initialState, action) => {
         transaction: filteredTransaction,
       };
     case Types.SORT_TRANSACTION:
-      let sortedTransaction = [];
+      let sortedTransaction: any[] = [];
       Object.assign(sortedTransaction, state.transaction);
       if (action.payload === strings.sortNameAZ) {
         sortedTransaction = sortedTransaction.sort(HELPER.sortNameAZ);

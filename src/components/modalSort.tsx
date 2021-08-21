@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {
   Text,
   View,
@@ -10,8 +10,12 @@ import {COLORS} from '../utils';
 import {styles as globalStyles} from '../styles';
 import {strings} from '../utils/localization';
 import Icon from 'react-native-vector-icons/Ionicons';
-
-const ModalSort = ({visible, onRequestClose, value}) => {
+type Props = {
+  visible: boolean;
+  onRequestClose(params: string): void;
+  value: string;
+};
+const ModalSort: FC<Props> = ({visible, onRequestClose, value}) => {
   const dataFilter = [
     {
       label: strings.sort,
@@ -30,7 +34,7 @@ const ModalSort = ({visible, onRequestClose, value}) => {
     },
   ];
   const [sort, setSort] = React.useState(value || strings.sort);
-  function _handleClose(item) {
+  function _handleClose(item: string = '') {
     if (item) {
       setSort(item);
       onRequestClose(item);

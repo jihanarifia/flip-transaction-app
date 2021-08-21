@@ -25,12 +25,12 @@ const CONSTANTS = {
 };
 
 const HELPER = {
-  SeperatorNumber(num) {
+  SeperatorNumber(num: {toString: () => string}) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
   },
-  dateTimeFormat(strDate) {
+  dateTimeFormat(strDate: any) {
     let strSplitDate = String(strDate).split(' ');
-    let date = new Date(strSplitDate[0]);
+    let date: any = new Date(strSplitDate[0]);
     let dd = date.getDate();
     let mm = date.getMonth(); //January is 0!
     let yyyy = date.getFullYear();
@@ -58,7 +58,7 @@ const HELPER = {
     return date.toString();
   },
 
-  sortNameAZ(a, b) {
+  sortNameAZ(a: {beneficiary_name: number}, b: {beneficiary_name: number}) {
     if (a.beneficiary_name < b.beneficiary_name) {
       return -1;
     }
@@ -68,7 +68,7 @@ const HELPER = {
     return 0;
   },
 
-  sortNameZA(a, b) {
+  sortNameZA(a: {beneficiary_name: number}, b: {beneficiary_name: number}) {
     if (b.beneficiary_name < a.beneficiary_name) {
       return -1;
     }
@@ -78,14 +78,20 @@ const HELPER = {
     return 0;
   },
 
-  sortNewDate(a, b) {
-    var c = new Date(a.created_at);
-    var d = new Date(b.created_at);
+  sortNewDate(
+    a: {created_at: string | number | Date},
+    b: {created_at: string | number | Date},
+  ): number {
+    let c: any = new Date(a.created_at);
+    let d: any = new Date(b.created_at);
     return d - c;
   },
-  sortOldDate(a, b) {
-    var c = new Date(a.created_at);
-    var d = new Date(b.created_at);
+  sortOldDate(
+    a: {created_at: string | number | Date},
+    b: {created_at: string | number | Date},
+  ): number {
+    var c: any = new Date(a.created_at);
+    var d: any = new Date(b.created_at);
     return c - d;
   },
 };

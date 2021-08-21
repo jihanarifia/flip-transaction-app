@@ -1,24 +1,23 @@
 import * as React from 'react';
 import {useEffect} from 'react';
-import {FlatList, Text, TouchableOpacity, View} from 'react-native';
+import {FlatList, TouchableOpacity, View} from 'react-native';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import {AnyAction, bindActionCreators, Dispatch} from 'redux';
 import {ErrorPage} from '../../components/errorPage';
 import {LoadingFullscreen} from '../../components/loadingFullScreen';
 import {TransactionActions} from '../../redux/action';
 import {styles} from '../../styles';
 import {ROUTE_NAMES} from '../../utils';
-import {strings} from '../../utils/localization';
 import Item from './item';
 import SearchInput from './search';
 
-const Skeleton = () => {
-  return (
-    <View>
-      <Text>Skeleton</Text>
-    </View>
-  );
-};
+// const Skeleton = () => {
+//   return (
+//     <View>
+//       <Text>Skeleton</Text>
+//     </View>
+//   );
+// };
 
 function TransactionScreen({
   navigation,
@@ -26,12 +25,12 @@ function TransactionScreen({
   loading,
   transactionActions,
   isErrorPage,
-}) {
+}: any) {
   const [refreshing, setRefreshing] = React.useState(false);
 
   React.useEffect(() => {
     transactionActions.getTransaction();
-  }, []);
+  }, [transactionActions]);
 
   useEffect(() => {
     if (refreshing) {
@@ -40,7 +39,7 @@ function TransactionScreen({
     }
   }, [refreshing, transactionActions]);
 
-  const renderItem = ({item, index}) => {
+  const renderItem = ({item, index}: any) => {
     return (
       <TouchableOpacity
         key={index.toString()}
@@ -70,7 +69,7 @@ function TransactionScreen({
           onRefresh={() => setRefreshing(true)}
           ListFooterComponent={() =>
             !loading && transactionList.length === 0 ? (
-              <ErrorPage type={'empty'} />
+              <ErrorPage type={'empty'} onPress={() => {}} />
             ) : null
           }
         />
@@ -80,13 +79,17 @@ function TransactionScreen({
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: {
+  transaction: any;
+  loading: any;
+  transactionListErr: any;
+}) => ({
   transactionList: state.transaction,
   loading: state.loading,
   isErrorPage: state.transactionListErr,
 });
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => {
   return {
     transactionActions: bindActionCreators(TransactionActions, dispatch),
   };

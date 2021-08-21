@@ -4,7 +4,12 @@ import {COLORS} from '../utils';
 import {strings} from '../utils/localization';
 import {styles as globalStyles} from '../styles';
 
-const ErrorPage = ({type, onPress}) => {
+type Props = {
+  type?: string;
+  onPress: () => void;
+};
+
+const ErrorPage: React.FC<Props> = ({type, onPress}) => {
   const content = () => {
     if (type === 'empty') {
       return (
@@ -31,9 +36,10 @@ const ErrorPage = ({type, onPress}) => {
           <View style={styles.buttonContainer}>
             <Button
               title={strings.refresh.toUpperCase()}
-              height={50}
-              fontSize={12}
-              onPress={onPress}
+              // height={50}
+              // fontSize={12}
+              onPress={() => onPress()}
+              // onPress={onPress}
               color={COLORS.ORANGE}
             />
           </View>
@@ -44,7 +50,7 @@ const ErrorPage = ({type, onPress}) => {
 
   return (
     <View>
-      <View style={[styles.containerErrPage]}>{content()}</View>
+      <View>{content()}</View>
     </View>
   );
 };
